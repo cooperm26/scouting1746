@@ -26,50 +26,50 @@
 <body>
   <form action="insert.php" method="post">
     <div class="left">
-      name:<br>
+      Name:<br>
       <input type="text" name="scout_id" >
       <br>
-      team number:<br>
+      Team Number:<br>
       <input type="text" name="team_id" >
       <br>
-      match number:<br>
+      Match Number:<br>
       <input type="text" name="match_id">
       <br>
-      <h1>Auton
+      <h1>Autonomous
       </h1>
-      auto cross<br>
-      <input type="radio" name="auto_cross" value="yes" checked> yes
-      <input type="radio" name="auto_cross" value="no" > no
+      Auto Cross<br>
+      <input type="radio" name="auto_cross" value="yes" checked> Yes
+      <input type="radio" name="auto_cross" value="no" > No
       <br>
-      auto switch:<br>
+      Auto Switch:<br>
       <button type ="button"> -</button>
       <input type="text" name="auto_in_switch">
-      <button type ="button"> +</button>
+      <button type ="button"> + </button>
       <br>
-      auto scale:<br>
-      <button type ="button"> -</button>
+      Auto Scale:<br>
+      <button type ="button"> - </button>
       <input type="text" name="auto_on_scale">
       <button type ="button"> +</button>
       <br>
-      auto time for switch:<br>
+      Auto Time for Switch:<br>
       <input type="text" name="auto_time_for_switch">
       <br>
-      auto time for scale :<br>
+      Auto Time for Scale :<br>
       <input type="text" name="auto_time_for_scale">
       <br>
       <h1>Color
       </h1>
       Switch side :<br>
-      <input type="radio" name="switch_side" value="L" checked> L
-      <input type="radio" name="switch_side" value="R" > r
+      <input type="radio" name="switch_side" value="L" checked> Left
+      <input type="radio" name="switch_side" value="R" > Right
       <br>
       Scale side :<br>
-      <input type="radio" name="scale_side" value="L" checked> L
-      <input type="radio" name="scale_side" value="R" > r
+      <input type="radio" name="scale_side" value="L" checked> Left
+      <input type="radio" name="scale_side" value="R" > Right
       <br>
       Opp Switch side :<br>
-      <input type="radio" name="enemy_switch_side" value="L" checked> L
-      <input type="radio" name="enemy_switch_side" value="R" > r
+      <input type="radio" name="enemy_switch_side" value="L" checked> Left
+      <input type="radio" name="enemy_switch_side" value="R" > Right
       <br>
     </div>
     <div class="center">
@@ -153,7 +153,7 @@
       Notes :<br>
       <input type="text" name="notes">
       <br>
-      Climber Discription :<br>
+      Climber Description :<br>
       <input type="text" name="climb_mech_discription">
       <br>  <input type="submit">
     </div>`

@@ -1,3 +1,4 @@
+<?php include('./getScouts.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
             <h1>General</h1><br>
             <b>Scout Name:</b><br>
 
-            <script src='./getScouts.php'></script>
+            <?php echo $sel ?>
 
             <br>
             <b>Team Number:</b><br>

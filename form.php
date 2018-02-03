@@ -1,4 +1,7 @@
 <?php include('./getScouts.php') ?>
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +28,8 @@
 </head>
 <body>
     <form action="insert.php" method="post">
-    <div class="row">
-        <div class="column">
+    <div class="column">
+        <div class="row">
             <h1>General</h1><br>
             <b>Scout Name:</b><br>
 
@@ -34,7 +37,7 @@
 
             <br>
             <b>Team Number:</b><br>
-            <input type="text" name="team_id" >
+            <input type="text"  name="team_id">
             <br>
             <b>Match Number:</b><br>
             <input type="text" name="match_id">
@@ -61,7 +64,10 @@
             <b>Auto Time for Scale:</b><br>
             <input type="number" name="auto_time_for_scale" value=0>
             <br><br>
+          </div>
+        </div>
 
+        <div class="column">
             <h1>Color</h1><br>
             <b>Switch side:</b><br>
             <input type="radio" name="switch_side" value="L" checked> Left
@@ -75,100 +81,17 @@
             <input type="radio" name="enemy_switch_side" value="L" checked> Left
             <input type="radio" name="enemy_switch_side" value="R" > Right
             <br>
-        </div>
-        <div class="column">
-            <h1>Teleop</h1><br>
-            <b>1 -- On Switch:</b><br>
-            <button type ="button" onClick="decrease('teleop_on_switch')"> -</button>
-            <input type="number" id="teleop_on_switch" value=0>
-            <button type ="button" onClick="increase('teleop_on_switch')"> +</button>
-            <br>
-            <b>2 -- On Scale:</b><br>
-            <button type ="button" onClick="decrease('teleop_on_scale')"> -</button>
-            <input type="number" id="teleop_on_scale" value=0>
-            <button type ="button" onClick="increase('teleop_on_scale')"> +</button>
-            <br>
-            <b>3 -- On Enemy Switch:</b><br>
-            <button type ="button" onClick="decrease('teleop_on_enemy_switch')"> -</button>
-            <input type="number" id="teleop_on_enemy_switch" value=0>
-            <button type ="button" onClick="increase('teleop_on_enemy_switch')"> +</button>
-            <br>
-            <b>4 -- In Exchange Zone:</b><br>
-            <button type ="button" onClick="decrease('scored_in_vault')"> -</button>
-            <input type="number" id="scored_in_vault" value=0>
-            <button type ="button" onClick="increase('scored_in_vault')"> +</button>
-            <br><br>
 
-            <h2> Cubes Placed</h2><br>
-            <b>Scale Low:</b><br>
-            <input type="radio" name="scale_low" value="yes" checked> Yes
-            <input type="radio" name="scale_low" value="failed" > Failed
-            <input type="radio" name="scale_low" value="not_attempted" > Not Attempted
-            <br>
-            <b>Scale Medium:</b><br>
-            <input type="radio" name="scale_medium" value="yes" checked> Yes
-            <input type="radio" name="scale_medium" value="failed" > Failed
-            <input type="radio" name="scale_medium" value="not_attempted" > Not Attempted
-            <br>
-            <b>Scale High:</b><br>
-            <input type="radio" name="scale_high" value="yes" checked> Yes
-            <input type="radio" name="scale_high" value="failed" > Failed
-            <input type="radio" name="scale_high" value="not_attempted" > Not Attempted
-            <br><br>
+            <h1>Extra</h1><br>
 
-            <h2>Taken From...</h2><br>
-            <b>5 -- Portal:</b><br>
-            <button type ="button" onClick="decrease('taken_from_portal')"> -</button>
-            <input type="number" id="taken_from_portal" value=0>
-            <button type ="button" onClick="increase('taken_from_portal')"> +</button>
-            <br>
-            <b>6 -- Power Cube Zone:</b><br>
-            <button type ="button" onClick="decrease('taken_from_power_cube_zone')"> -</button>
-            <input type="number" id="taken_from_power_cube_zone" value=0>
-            <button type ="button" onClick="increase('taken_from_power_cube_zone')"> +</button>
-            <br>
-            <b>7 -- Platform Zone:</b><br>
-            <button type ="button" onClick="decrease('taken_from_platform_zone')"> -</button>
-            <input type="number" id="taken_from_platform_zone" value=0>
-            <button type ="button" onClick="increase('taken_from_platform_zone')"> +</button>
-            <br>
-            <b>8 -- Enemy Side:</b><br>
-            <button type ="button" onClick="decrease('taken_from_enemy_side')"> -</button>
-            <input type="number" id="taken_from_enemy_side" value=0>
-            <button type ="button" onClick="increase('taken_from_enemy_side')"> +</button>
-            <br>
-            <b>9 -- Random Area:</b><br>
-            <button type ="button" onClick="decrease('taken_from_random_area')"> -</button>
-            <input type="number" id="taken_from_random_area" value=0>
-            <button type ="button" onClick="increase('taken_from_random_area')"> +</button>
-            <br>
-        </div>
-        <div class="column">
-            <img src="otto.png">
-            <br><br>
-            <h1> Endgame </h1><br>
-            <b>Parked on Platform:</b><br>
-            <input type="radio" name="park_on_platform" value="Yes" checked> Yes
-            <input type="radio" name="park_on_platform" value="No" > No
-            <input type="radio" name="park_on_platform" value="counted_as_climb" > Climbed
-            <br>
-            <b>Climbs Responsible for:</b><br>
-            <input type="radio" name="climbs_responsible_for" value="0" checked> 0
-            <input type="radio" name="climbs_responsible_for" value="1" > 1
-            <input type="radio" name="climbs_responsible_for" value="2" > 2
-            <input type="radio" name="climbs_responsible_for" value="3" > 3
+            <nav>
+              <button type="button"> <a href="form2.php">Next Page</a></button>
+            </nav>
 
-            <h1>Notes</h1>
-            <b>Notes:</b><br>
-            <textarea name="notes" rows=8></textarea>
-            <br><br>
-            <b>Climber Description:</b><br>
-            <textarea name="climb_mech_discription" rows=8></textarea>
-            <br><br>
-            <input class="action" type="submit">
         </div>
-    </div>
+
     </form>
+    <form
 
     <script src="mousetrap/mousetrap.min.js"></script>
     <script>
@@ -205,5 +128,8 @@
 
 
     </script>
+    <?php
+      $_SESSION['team_id'] = "why doesnt this work" ; 
+     ?>
 </body>
 </html>

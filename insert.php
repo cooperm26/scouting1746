@@ -36,8 +36,8 @@ $sql = "INSERT INTO matchdata (scout_id,
    scale_medium,
    scale_high,
    notes,
-   climb_mech_discription
-
+   climb_mech_discription,
+   fouls
  )
 VALUES ('$_POST[scout_id]',
   '$_POST[team_id]',
@@ -64,7 +64,8 @@ VALUES ('$_POST[scout_id]',
   '$_POST[scale_medium]',
   '$_POST[scale_high]',
   '$_POST[notes]',
-  '$_POST[climb_mech_discription]'
+  '$_POST[climb_mech_discription]',
+  '$_POST[fouls]'
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -72,7 +73,8 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
 $conn->close();
-
 ?>
+<nav>
+  <button> <a href="form.php">New Form</a></button>
+</nav>

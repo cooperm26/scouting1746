@@ -1,6 +1,9 @@
 <?php include('./getScouts.php') ?>
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -129,7 +132,8 @@ session_start();
 
     </script>
     <?php
-      $_SESSION['team_id'] = "why doesnt this work" ; 
+    //Currently not functional, works when $_SESSION is set to a constant
+      $_SESSION['team_id'] = $_GET['team_id'] ;
      ?>
 </body>
 </html>

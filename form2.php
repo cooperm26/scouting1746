@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +31,8 @@ session_start();
   <body>
     <form action="insert.php" method="post">
     <div class="column">
-      <div class="row">
+      <div class="row
+      <input type="text" name="team_id" <?php echo $_SESSION['team_id'] ?> >
         <h1>Teleop</h1><br>
         <b>1 -- On Switch:</b><br>
         <button type ="button" onClick="decrease('teleop_on_switch')"> -</button>
@@ -115,14 +119,18 @@ session_start();
         <textarea name="notes" rows=8></textarea>
         <br><br>
         <b>Climber Description:</b><br>
-        <textarea name="climb_mech_discription" rows=8></textarea>
+        <textarea name="climb_mech_discription" rows=8> </textarea>
         <br>
+        <b>Fouls</b><br>
+        <textarea name="fouls" rows=8> </textarea>
         <nav>
           <button type="button"> <a href="form.php">Previous Page</a></button>
         </nav>
         <br>
-        <input class="action" type="submit">
+        <input class="action" type="submit" onclick="return confirm('Are all data fields completed and accurate?');">
     </div>
+    <!-- This records the session variable into the database -->
+    <input type="hidden"  name="team_id" value = <?php echo $_SESSION['team_id'] ?> >
   </form>
   <form
 
@@ -165,5 +173,5 @@ session_start();
 </html>
 <?php
 //This was supposed to print the team ID that was inputted on the first page
-echo "Team Number: " . $_SESSION['team_id'];
+$_SESSION['team_id'];
  ?>

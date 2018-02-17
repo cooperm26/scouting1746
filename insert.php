@@ -11,6 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// SQL to insert match data into the database
 $sql = "INSERT INTO matchdata (scout_id,
    team_id,
    match_id,
@@ -26,6 +27,7 @@ $sql = "INSERT INTO matchdata (scout_id,
    teleop_on_scale,
    teleop_on_enemy_switch,
    scored_in_vault,
+   taken_from_portal,
    taken_from_power_cube_zone,
    taken_from_platform_zone,
    taken_from_enemy_side,
@@ -36,8 +38,8 @@ $sql = "INSERT INTO matchdata (scout_id,
    scale_medium,
    scale_high,
    notes,
-   climb_mech_discription,
-   fouls
+   climb_mech_discription
+
  )
 VALUES ('$_POST[scout_id]',
   '$_POST[team_id]',
@@ -54,6 +56,7 @@ VALUES ('$_POST[scout_id]',
   '$_POST[teleop_on_scale]',
   '$_POST[teleop_on_enemy_switch]',
   '$_POST[scored_in_vault]',
+  '$_POST[taken_from_portal]',
   '$_POST[taken_from_power_cube_zone]',
   '$_POST[taken_from_platform_zone]',
   '$_POST[taken_from_enemy_side]',
@@ -64,17 +67,38 @@ VALUES ('$_POST[scout_id]',
   '$_POST[scale_medium]',
   '$_POST[scale_high]',
   '$_POST[notes]',
-  '$_POST[climb_mech_discription]',
-  '$_POST[fouls]'
-)";
+  '$_POST[climb_mech_discription]'
+);";
 
-if ($conn->query($sql) === TRUE) {
+// SQL to insert fouls into the database
+$num = $_POST['numFouls'];
+
+for ($i = 0; $i < $num; $i++) {
+    $type = $_POST['foul_type' . $i];
+    $expl = $_POST['explain_foul' . $i];
+
+    $sql .= "INSERT INTO fouls (
+        team_id,
+        match_id,
+        type,
+        explanation
+    )
+    VALUES (
+        '$_POST[team_id]',
+        '$_POST[match_id]',
+        '$type',
+        '$expl'
+    );";
+}
+
+// execute SQL query
+if ($conn->multi_query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+// close database connection
 $conn->close();
+
 ?>
-<nav>
-  <button> <a href="form.php">New Form</a></button>
-</nav>
